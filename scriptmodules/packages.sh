@@ -373,10 +373,12 @@ function rp_registerModule() {
     local valid=1
 
     for flag in "${flags[@]}"; do
+		echo $flag ${BASH_REMATCH[1]} $(isPlatform "${BASH_REMATCH[1]}")
         if [[ "$flag" =~ ^\!(.+) ]] && isPlatform "${BASH_REMATCH[1]}"; then
             valid=0
             break
         fi
+		echo valid=$valid
     done
 
     if [[ "$valid" -eq 1 ]]; then
@@ -408,6 +410,7 @@ function rp_registerAllModules() {
     rp_registerModuleDir 300 "ports"
     rp_registerModuleDir 800 "supplementary"
     rp_registerModuleDir 900 "admin"
+	exit
 }
 
 function rp_getIdxFromId() {
