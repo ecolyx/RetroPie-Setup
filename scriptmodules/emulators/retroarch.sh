@@ -42,7 +42,7 @@ function build_retroarch() {
     isPlatform "mali" && params+=(--enable-mali_fbdev)
     isPlatform "arm" && params+=(--enable-floathard)
     isPlatform "neon" && params+=(--enable-neon)
-    isPlatform "sun8i" && params+=(--disable-ffmpeg --enable-mali_fbdev --enable-x11 --enable-neon --enable-floathard)
+    isPlatform "sun8i" && params+=(--disable-ffmpeg --enable-x11)
     ./configure --prefix="$md_inst" "${params[@]}"
     make clean
     make
