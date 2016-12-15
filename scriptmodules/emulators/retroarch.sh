@@ -16,7 +16,7 @@ rp_module_section="core"
 function depends_retroarch() {
     local depends=(libudev-dev libxkbcommon-dev libsdl2-dev libasound2-dev)
     isPlatform "rpi" && depends+=(libraspberrypi-dev)
-    isPlatform "mali" && ! isPlatform "sun8i" && depends+=(mali-fbdev)
+    isPlatform "mali" && depends+=(mali-fbdev)
     isPlatform "x86" && depends+=(nvidia-cg-toolkit)
     isPlatform "x11" && depends+=(libpulse-dev libavcodec-dev libavformat-dev libavdevice-dev)
     compareVersions "$__os_release" ge 8  && depends+=(libusb-1.0-0-dev)
