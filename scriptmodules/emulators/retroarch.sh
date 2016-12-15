@@ -16,7 +16,7 @@ rp_module_section="core"
 function depends_retroarch() {
     local depends=(libudev-dev libxkbcommon-dev libsdl2-dev libasound2-dev)
     isPlatform "rpi" && depends+=(libraspberrypi-dev)
-    isPlatform "mali" && depends+=(mali-fbdev)
+    isPlatform "mali" && ! isPlatform "sun8i" && depends+=(mali-fbdev)
     isPlatform "x86" && depends+=(nvidia-cg-toolkit)
     isPlatform "x11" && depends+=(libpulse-dev libavcodec-dev libavformat-dev libavdevice-dev)
     compareVersions "$__os_release" ge 8  && depends+=(libusb-1.0-0-dev)
@@ -42,6 +42,7 @@ function build_retroarch() {
     isPlatform "mali" && params+=(--enable-mali_fbdev)
     isPlatform "arm" && params+=(--enable-floathard)
     isPlatform "neon" && params+=(--enable-neon)
+    isPlatform "sun8i" && params+=(--disable-ffmpeg --enable-mali_fbdev --enable-x11 --enable-neon --enable-floathard)
     ./configure --prefix="$md_inst" "${params[@]}"
     make clean
     make

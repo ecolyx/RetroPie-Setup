@@ -173,6 +173,14 @@ function get_platform() {
             "Freescale i.MX6 Quad/DualLite (Device Tree)")
                 __platform="imx6"
                 ;;
+			sun8i)
+				case $architecture in
+					armv7l)
+						architecture="armv7-a"
+						__platform="opi1"
+						;;
+				esac
+				;;
             *)
                 case $architecture in
                     i686|x86_64|amd64)
@@ -275,7 +283,7 @@ function platform_opi1() {
     __default_cflags="-O2 -mfpu=neon-vfpv4 -march=armv7-a -mfloat-abi=hard -mtune=cortex-a7 -funsafe-math-optimizations -ftree-vectorize"
     __default_asflags=""
     __default_makeflags=""
-    __platform_flags="arm armv7 x11"
+    __platform_flags="arm armv7 mali sun8i neon vfpv4 neon-vfpv4 x11"
     # if building in a chroot, what cpu should be set by qemu
     # make chroot identify as cortex-a7/a15 (compatible)
     __qemu_cpu=cortex-a15
