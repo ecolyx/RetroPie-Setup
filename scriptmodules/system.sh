@@ -281,7 +281,7 @@ function platform_imx6() {
 function platform_opi1() {
 	__debug="1"
     # values to be used for configure/make
-    __default_cflags="-O2 -mfpu=neon-vfpv4 -march=armv7-a -mfloat-abi=hard -mtune=cortex-a7 -funsafe-math-optimizations -ftree-vectorize"
+    __default_cflags="-O2 -mfpu=vfpv4 -march=armv7-a -mfloat-abi=hard -mtune=cortex-a7 -funsafe-math-optimizations -ftree-vectorize"
     __default_asflags=""
     __default_makeflags=""
     __platform_flags="arm armv7 sun8i x11"
