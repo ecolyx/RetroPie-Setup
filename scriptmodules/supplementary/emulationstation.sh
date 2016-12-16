@@ -147,8 +147,10 @@ function sources_emulationstation() {
 }
 
 function build_emulationstation() {
+    local gles=""
     rpSwap on 512
-    cmake . -DFREETYPE_INCLUDE_DIRS=/usr/include/freetype2/
+	isPlatform "sun8i" && gles="-DOPENGLES_INCLUDE_DIR=/usr/include/GL/"
+    cmake . -DFREETYPE_INCLUDE_DIRS=/usr/include/freetype2/ $gles
     make clean
     make
     rpSwap off
