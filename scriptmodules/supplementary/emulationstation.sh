@@ -140,6 +140,7 @@ function sources_emulationstation() {
     [[ -z "$branch" ]] && branch="master"
     gitPullOrClone "$md_build" "$repo" "$branch"
     # make sure libMali.so can be found so we use OpenGL ES
+	echo $__platform_flags
     if isPlatform "mali"; then
         sed -i 's|/usr/lib/libMali.so|/usr/lib/arm-linux-gnueabihf/libMali.so|g' CMakeLists.txt
     fi

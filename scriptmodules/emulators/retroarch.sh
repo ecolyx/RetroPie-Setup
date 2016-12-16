@@ -43,6 +43,7 @@ function build_retroarch() {
     isPlatform "arm" && params+=(--enable-floathard)
     isPlatform "neon" && params+=(--enable-neon)
     isPlatform "sun8i" && params+=(--disable-ffmpeg --enable-x11)
+	echo \-\-prefix=\"$md_inst\" $params \"${params[@]}\"
     ./configure --prefix="$md_inst" "${params[@]}"
     make clean
     make
