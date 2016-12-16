@@ -126,10 +126,11 @@ function depends_emulationstation() {
         libboost-locale-dev libboost-system-dev libboost-filesystem-dev
         libboost-date-time-dev libfreeimage-dev libfreetype6-dev libeigen3-dev
         libcurl4-openssl-dev libasound2-dev cmake libsdl2-dev libsm-dev
-        libvlc-dev libvlccore-dev vlc-nox
+        libvlc-dev libvlccore-dev vlc-nox  
     )
 
     isPlatform "x11" && depends+=(gnome-terminal)
+	isPlatform "sun8i" && depends+=(libgles1-mesa-dev)
     getDepends "${depends[@]}"
 }
 
