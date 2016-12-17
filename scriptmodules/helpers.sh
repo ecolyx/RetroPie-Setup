@@ -101,12 +101,9 @@ function hasFlag() {
 ## @brief Test for current platform / platform flags.
 function isPlatform() {
     local flag="$1"
-	echo platform=$__platform platform_flags=$__platform_flags flag=$flag
     if hasFlag "$__platform $__platform_flags" "$flag"; then
-		echo yes
         return 0
     fi
-	echo no
     return 1
 }
 

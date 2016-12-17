@@ -281,10 +281,11 @@ function platform_imx6() {
 function platform_opi1() {
 	__debug="1"
     # values to be used for configure/make
-    __default_cflags="-O2 -mfpu=vfpv4 -march=armv7-a -mfloat-abi=hard -mtune=cortex-a7 -funsafe-math-optimizations -ftree-vectorize"
+    #    __default_cflags="-O2 -mfpu=vfpv4 -march=armv7-a -mfloat-abi=hard -mtune=cortex-a7 -funsafe-math-optimizations -ftree-vectorize"
+    __default_cflags="-O2 -funsafe-math-optimizations -ftree-vectorize"
     __default_asflags=""
     __default_makeflags=""
-    __platform_flags="arm armv7 sun8i x11"
+    __platform_flags="sun8i x11"
     # if building in a chroot, what cpu should be set by qemu
     # make chroot identify as cortex-a7/a15 (compatible)
     __qemu_cpu=cortex-a15
